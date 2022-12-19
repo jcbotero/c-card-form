@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./stylesheet.css" rel="stylesheet">
+    <link rel="preconnect" href="./SpaceGrotesk-Regular.ttf">
+    <title>C-CARD FORM</title>
+</head>
+<body>
+    <header>
+        <section class="card">
+            <h1 style="display:none;">credit card validation</h1>
+            <img src="images/bg-card-front.png" alt="bg-card-front">
+            <article class="cardtext">
+                <img src="images/card-logo.svg" alt="card-logo">
+                <p id="zero">0000 0000 0000 0000</p>
+                <p id="jane">JANE APPLESSED</p>
+                <div class="date">
+                <p id="mon">00</p>
+                <p>/</p>
+                <p id="yea">00</p>
+                </div>
+            </article>
+        </section>
+        <section class="card2">
+            <img src="images/bg-card-back.png" alt="bg-card-back">
+            <p id="cv">000</p>
+        </section>
+    </header>
+    <main>
+        <section class="form">
+            <h2 style="display:none;">information</h2>
+            <form id="form" action="" method="post" onsubmit="thanks(); return false;">
+                <article> <!--en el onsubmitt coloco la function con el code que voy a ejecutar y el return false para que no me refresque la web cuando se ejecute-->
+                  <label for="name">CARDHOLDER NAME</label>
+                  <input id="name" name="name" type="text" pattern=".*\S.{6,}.*" placeholder="e.g. Jane Applessed" onfocus="this.value=' '" required>
+                  <p style="display:none;" id="p1">Can't be blank </p>                
+                </article> <!--pattern para indicar que minimo van 6 letras-->
+                           <!--usar placeholder en vez de value y editarlo en css. asi no me hace submit sin cambiar el valor del input-->
+                <article>
+                    <label for="number">CARD NUMBER</label>
+                    <input  id="cardnumber" name="number" type="text" pattern=".*\S.{17,}." maxlength="19" placeholder="e.g. 1234 5678 9123 0000" onfocus="this.value=' '" required >
+                    <p style="display:none;">Can't be blank </p>    
+                </article> <!--el paterrn me dice que acepta minimo 19 digitos (se corre dos dese el 14 y contando los espacios, combino con max length)-->
+                 <article> 
+                    <div class="label">
+                       <label for="date">EXP.DATE (MM/YY)</label>
+                       <label for="cvc">CVC</label>
+                    </div>
+                    <div class="input">
+                        <input id="date" name="date" type="text" maxlength="3" pattern=".*\S.{1,}.*" placeholder="MM" onkeypress=" return /[0-9]/i.test(event.key)"  onfocus="this.value=' '" required>
+                         <input id="year" name="date" type="text" maxlength="3" pattern=".*\S.{1,}.*" placeholder="YY" onkeypress=" return /[0-9]/i.test(event.key)"  onfocus="this.value=' '" required>
+                        <input id="cvc" name="cvc" type="text" placeholder="e.g. 123" maxlength="4" pattern=".*\S.{2,}.*" onkeypress=" return /[0-9]/i.test(event.key)"  onfocus="this.value=' '" required>
+                     </div> <!--con maxlength hago que no se pueda exceder max de caracteres.. si es 3 me deja maximo 2  y onkeypress que solo acepta numeros asi tbn evito que pongan espacio en los 16 numero-->
+                     <div>
+                        <p style="display:none;">Can't be blank </p>    
+                        <p style="display:none;">Can't be blank </p>    
+                    </div>
+                    </article>
+                 <article class="submit">
+                    <label for="submit" style="display: none;"></label>
+                    <input id="submit" name="submit" type="submit" value="Confirm">
+                 </article>
+            </form>
+        </section>
+        <section id="than" class="thanks" style="display:none ;">
+            <article>
+                <img src="images/icon-complete.svg" alt="icon-complete">
+                <h2>THANK YOU!</h2>
+                <p>We've added your card details</p>
+                <button class="button">Continue</button>
+            </article>
+        </section>
+    </main>
+    <script src="./script.js" > </script> 
+</body>
+</html>
